@@ -1,0 +1,14 @@
+.header {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .header h1 {
+    font-size: 28px;
+    color: #333;
+  }
+
+  .header img {
+    max-width: 150px;
+    height: auto;
+  }
