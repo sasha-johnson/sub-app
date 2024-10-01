@@ -3,8 +3,7 @@ import '../styles/Menu.css';
 import { useCart } from '../contexts/CartProvider';
 
 function Menu() {
-  const { addToCart } = useCart(); // Use addToCart from the context
-
+  const { addToCart } = useCart();
   const menuItems = [
     { id: 1, name: "Italian B.M.T.", description: "A delicious combination of Genoa salami, pepperoni, and ham.", price: 7.99 },
     { id: 2, name: "Meatball Marinara", description: "Savory meatballs smothered in marinara sauce, topped with melted cheese.", price: 6.99 },

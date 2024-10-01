@@ -4,8 +4,7 @@ import React, { createContext, useContext, useState } from 'react';
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]); // Change this to cartItems
-
+  const [cartItems, setCartItems] = useState([]);
   const addToCart = (sandwich) => {
     setCartItems((prevCart) => [...prevCart, sandwich]);
   };

@@ -1,11 +1,9 @@
 // Cart.js
 import React from 'react';
 import '../styles/Cart.css';
-import { useCart } from '../contexts/CartProvider'; // Import useCart
-
+import { useCart } from '../contexts/CartProvider';
 function Cart() {
-  const { cartItems, setCartItems } = useCart(); // Destructure from context
-
+  const { cartItems, setCartItems } = useCart();
   const updateQuantity = (id, quantity) => {
     const updatedItems = cartItems.map((item) => {
       if (item.id === id) {

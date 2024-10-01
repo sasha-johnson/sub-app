@@ -25,7 +25,7 @@ function Customize() {
   };
 
   const handleAddToCart = () => {
-    const sandwich = { bread, meat, veggies, sauces, extras, id: Date.now(), price: 5.99, quantity: 1 }; // Add id and price
+    const sandwich = { bread, meat, veggies, sauces, extras, id: Date.now(), price: 5.99, quantity: 1 };
     addToCart(sandwich);
     navigate('/');
   };
