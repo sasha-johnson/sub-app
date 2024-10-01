@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartProvider';
 import '../styles/Customize.css';
 
+
+
 function Customize() {
   const [bread, setBread] = useState('');
   const [meat, setMeat] = useState([]);
@@ -23,7 +25,7 @@ function Customize() {
   };
 
   const handleAddToCart = () => {
-    const sandwich = { bread, meat, veggies, sauces, extras };
+    const sandwich = { bread, meat, veggies, sauces, extras, id: Date.now(), price: 5.99, quantity: 1 }; // Add id and price
     addToCart(sandwich);
     navigate('/');
   };
@@ -44,124 +46,56 @@ function Customize() {
 
       <div className="section">
         <h3>Select Your Meat</h3>
-        <label>
-          <input
-            type="checkbox"
-            value="Ham"
-            onChange={(e) => handleCheckboxChange(e, setMeat, meat)}
-          /> Ham
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="Turkey"
-            onChange={(e) => handleCheckboxChange(e, setMeat, meat)}
-          /> Turkey
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="Roast Beef"
-            onChange={(e) => handleCheckboxChange(e, setMeat, meat)}
-          /> Roast Beef
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="Chicken"
-            onChange={(e) => handleCheckboxChange(e, setMeat, meat)}
-          /> Chicken
-        </label>
+        {['Ham', 'Turkey', 'Roast Beef', 'Chicken'].map((option) => (
+          <label key={option}>
+            <input
+              type="checkbox"
+              value={option}
+              onChange={(e) => handleCheckboxChange(e, setMeat, meat)}
+            /> {option}
+          </label>
+        ))}
       </div>
 
       <div className="section">
         <h3>Select Your Veggies</h3>
-        <label>
-          <input
-            type="checkbox"
-            value="Lettuce"
-            onChange={(e) => handleCheckboxChange(e, setVeggies, veggies)}
-          /> Lettuce
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="Tomato"
-            onChange={(e) => handleCheckboxChange(e, setVeggies, veggies)}
-          /> Tomato
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="Onions"
-            onChange={(e) => handleCheckboxChange(e, setVeggies, veggies)}
-          /> Onions
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="Cucumbers"
-            onChange={(e) => handleCheckboxChange(e, setVeggies, veggies)}
-          /> Cucumbers
-        </label>
+        {['Lettuce', 'Tomato', 'Onions', 'Cucumbers'].map((option) => (
+          <label key={option}>
+            <input
+              type="checkbox"
+              value={option}
+              onChange={(e) => handleCheckboxChange(e, setVeggies, veggies)}
+            /> {option}
+          </label>
+        ))}
       </div>
 
       <div className="section">
         <h3>Select Your Sauces</h3>
-        <label>
-          <input
-            type="checkbox"
-            value="Mayo"
-            onChange={(e) => handleCheckboxChange(e, setSauces, sauces)}
-          /> Mayo
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="Mustard"
-            onChange={(e) => handleCheckboxChange(e, setSauces, sauces)}
-          /> Mustard
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="Chipotle Southwest"
-            onChange={(e) => handleCheckboxChange(e, setSauces, sauces)}
-          /> Chipotle Southwest
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="BBQ Sauce"
-            onChange={(e) => handleCheckboxChange(e, setSauces, sauces)}
-          /> BBQ Sauce
-        </label>
+        {['Mayo', 'Mustard', 'Chipotle Southwest', 'BBQ Sauce'].map((option) => (
+          <label key={option}>
+            <input
+              type="checkbox"
+              value={option}
+              onChange={(e) => handleCheckboxChange(e, setSauces, sauces)}
+            /> {option}
+          </label>
+        ))}
       </div>
 
       <div className="section">
         <h3>Select Your Extras</h3>
-        <label>
-          <input
-            type="checkbox"
-            value="Cheese"
-            onChange={(e) => handleCheckboxChange(e, setExtras, extras)}
-          /> Cheese
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="Bacon"
-            onChange={(e) => handleCheckboxChange(e, setExtras, extras)}
-          /> Bacon
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="Avocado"
-            onChange={(e) => handleCheckboxChange(e, setExtras, extras)}
-          /> Avocado
-        </label>
+        {['Cheese', 'Bacon', 'Avocado'].map((option) => (
+          <label key={option}>
+            <input
+              type="checkbox"
+              value={option}
+              onChange={(e) => handleCheckboxChange(e, setExtras, extras)}
+            /> {option}
+          </label>
+        ))}
       </div>
+
       <div className="summary">
         <h3>Your Sandwich</h3>
         <p><strong>Bread:</strong> {bread || "None selected"}</p>

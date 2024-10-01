@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import necessary components from React Router
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Nav from './components/Nav';
@@ -13,26 +13,17 @@ import Cart from './components/Cart';
 import ReactDOM from 'react-dom';
 import { CartProvider } from './contexts/CartProvider';
 
-ReactDOM.render(
-  <CartProvider>
-    <App />
-  </CartProvider>,
-  document.getElementById('root')
-);
-
-
 function App() {
   const [cartItems, setCartItems] = useState([]);
 
-
   return (
-    <Router> {/* Wrap your app with Router */}
+    <Router>
       <Header />
       <Nav />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/menu" element={<Menu cartItems={cartItems} setCartItems={setCartItems} />} />
-        <Route path="/customize" element={<Customize cartItems={cartItems} setCartItems={setCartItems} />} />
+        <Route path="/customize" element={<Customize />} />
         <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
@@ -41,5 +32,12 @@ function App() {
     </Router>
   );
 }
+
+ReactDOM.render(
+  <CartProvider>
+    <App />
+  </CartProvider>,
+  document.getElementById('root')
+);
 
 export default App;

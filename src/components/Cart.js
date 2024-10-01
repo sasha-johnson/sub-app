@@ -1,7 +1,11 @@
+// Cart.js
 import React from 'react';
 import '../styles/Cart.css';
+import { useCart } from '../contexts/CartProvider'; // Import useCart
 
-function Cart({ cartItems, setCartItems }) {
+function Cart() {
+  const { cartItems, setCartItems } = useCart(); // Destructure from context
+
   const updateQuantity = (id, quantity) => {
     const updatedItems = cartItems.map((item) => {
       if (item.id === id) {
@@ -31,15 +35,19 @@ function Cart({ cartItems, setCartItems }) {
               <h3>{item.name}</h3>
               <p>{item.description}</p>
               <p>Price: ${item.price.toFixed(2)}</p>
-              <p>
-                Quantity: 
+              <p>Quantity: 
                 <input
                   type="number"
                   min="1"
-                  value={item.quantity}
+                  value={item.quantity || 1} // Ensure default value if undefined
                   onChange={(e) => updateQuantity(item.id, Number(e.target.value))}
                 />
               </p>
+              {item.bread && <p><strong>Bread:</strong> {item.bread}</p>}
+              {item.meat.length > 0 && <p><strong>Meat:</strong> {item.meat.join(', ')}</p>}
+              {item.veggies.length > 0 && <p><strong>Veggies:</strong> {item.veggies.join(', ')}</p>}
+              {item.sauces.length > 0 && <p><strong>Sauces:</strong> {item.sauces.join(', ')}</p>}
+              {item.extras.length > 0 && <p><strong>Extras:</strong> {item.extras.join(', ')}</p>}
               <button onClick={() => removeItem(item.id)}>Remove</button>
             </div>
           ))

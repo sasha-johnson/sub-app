@@ -8,7 +8,6 @@ function Main() {
       <section className="hero">
         <img src="hero-image.jpg" alt="Hero" className="hero-image" />
         <div className="hero-content">
-          <h1>Welcome to Subway</h1>
           <p>Find the best promotions just for you.</p>
           <Link to="/customize">
             <button className="cta-button">Shop Now</button>
